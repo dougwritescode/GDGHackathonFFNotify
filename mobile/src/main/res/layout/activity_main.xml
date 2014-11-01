@@ -12,7 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Fantasty Roster"
         android:id="@+id/textView"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="26dp"  
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
