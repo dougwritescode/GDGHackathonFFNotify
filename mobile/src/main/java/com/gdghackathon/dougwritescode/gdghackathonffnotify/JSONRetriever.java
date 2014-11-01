@@ -7,24 +7,26 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class FFDataGrabber {
+public class JSONRetriever {
 
-    int leaguekey = 0;
-    String leaguekeystr = Integer.toString(leaguekey);
-    String httpreq = "";
+    public String targeturi = "";
 
-    public JSONObject getTeamDataJSON() {
+    public JSONRetriever(String inputURI) {
+        this.targeturi = inputURI;
+    }
+
+    public JSONObject retrieve() {
         StringBuilder builder = new StringBuilder();
         HttpClient client = new DefaultHttpClient();
-        HttpGet Tempjson = new HttpGet();
+        HttpGet Tempjson = new HttpGet(this.targeturi);
         try {
             HttpResponse response = client.execute(Tempjson);
             StatusLine statusLine = response.getStatusLine();
@@ -43,12 +45,10 @@ public class FFDataGrabber {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         try {
             return new JSONObject(builder.toString());
         } catch (JSONException jse) {
             return null;
         }
     }
-
 }

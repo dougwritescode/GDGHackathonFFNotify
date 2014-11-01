@@ -3,22 +3,29 @@ package com.gdghackathon.dougwritescode.gdghackathonffnotify;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import org.json.JSONObject;
+//import android.view.MenuItem;
+//import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends Activity {
 
-    static final String PLAYERS = "saved players";
+    static final String SAVED_PLAYERS = "saved players";
+    static final String PLAYERS = "players";
     WeatherGrabber weathergrabber = new WeatherGrabber();
-    FFDataGrabber ffdatagrabber = new FFDataGrabber();
     ArrayList<String> savedplayers = new ArrayList<String>();
+    ArrayList<String> players = new ArrayList<String>();
+    ArrayList<String> teams = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.savedplayers = savedInstanceState.getStringArrayList(PLAYERS);
+        this.savedplayers = savedInstanceState.getStringArrayList(SAVED_PLAYERS);
+        this.players = savedInstanceState.getStringArrayList(PLAYERS);
+        if (this.players.size() == 0) {
+            // populate active players list
+        }
         setContentView(R.layout.activity_main);
     }
 
@@ -47,7 +54,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putStringArrayList(PLAYERS, savedplayers);
+        savedInstanceState.putStringArrayList(SAVED_PLAYERS, savedplayers);
         super.onSaveInstanceState(savedInstanceState);
     }
 }
