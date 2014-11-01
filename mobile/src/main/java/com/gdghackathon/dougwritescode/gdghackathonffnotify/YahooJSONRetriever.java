@@ -20,6 +20,5 @@ public class YahooJSONRetriever {
 
     public OAuthHelper(String scope, String callbackUrl) throws UnsupportedEncodingException {
         mConsumer = new CommonsHttpOAuthConsumer("dj0yJmk9SzV6blIzMmNYb21VJmQ9WVdrOVdUbDZjamRvTTJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0zOA--", "f51252649e3590176cfe182a8ed3ece321dd0ba4");
-        // blarg, this API is terrible . . .
     }
 }
